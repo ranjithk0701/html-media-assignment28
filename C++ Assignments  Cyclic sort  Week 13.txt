@@ -1,0 +1,46 @@
+1-> a) O(n)
+
+2->
+
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        int n = nums.size();
+        int i = 0;
+        while(i < n){
+            int ci = nums[i] - 1;
+            if(nums[ci] == nums[i]) i++;
+            else swap(nums[i], nums[ci]);
+        }
+        vector<int> v;
+        for(int i = 0; i < n; i++){
+            if(nums[i] != i+1){
+                v.push_back(nums[i]);
+                v.push_back(i+1);
+            }
+        }
+        return v;
+    }
+};
+
+3->
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        int n = nums.size();
+        int i = 0;
+        while(i < n){
+            int ci = nums[i]-1;
+            if(nums[ci] == nums[i]) i++;
+            else swap(nums[i], nums[ci]);
+        }
+        vector<int> v;
+        for(int i = 0; i < n; i++){
+            if(nums[i] != i+1){
+                v.push_back(nums[i]);
+            }
+        }
+        return v;
+    }
+};
